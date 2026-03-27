@@ -12,7 +12,7 @@ public class Hero : MonoBehaviour
     public float pitchMultiplier = 30;
 
     [Header("Dynamic")] [Range(0, 4)] [SerializeField]
-    private float _shieldLevel = 1f;
+    private float _shieldLevel = 1;
     [Tooltip("This field holds a reference to the last triggering GameObject")]
     private GameObject lastTriggerGo = null;
 
@@ -75,6 +75,7 @@ public class Hero : MonoBehaviour
             if (value < 0)
             {
                 Destroy(this.gameObject);
+                Main.HERO_DIED();
             }
         }
     }
