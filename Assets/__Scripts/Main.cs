@@ -38,6 +38,7 @@ public class Main : MonoBehaviour
         float xMax = boundsCheck.cameraWidth - enemyInset;
         position.x = Random.Range(xMin, xMax);
         position.y = boundsCheck.cameraHeight + enemyInset;
+        go.transform.position = position;
 
         Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
     }
