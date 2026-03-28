@@ -89,9 +89,8 @@ public class PowerUp : MonoBehaviour
     {
         WeaponDefinition defintion = Main.GET_WEAPON_DEFINITION(weaponType);
         cubeMaterial.color = defintion.powerUpColor;
-        // letter.color = defintion.color;
         letter.text = defintion.letter;
-        type = weaponType;
+        _type = weaponType;
     }
 
     public void AbsorbedBy(GameObject target)

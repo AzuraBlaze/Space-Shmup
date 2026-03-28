@@ -31,6 +31,9 @@ public class Hero : MonoBehaviour
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
+
+        ClearWeapons();
+        weapons[0].SetType(eWeaponType.blaster);
     }
 
     void Update()

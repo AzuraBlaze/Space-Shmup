@@ -114,7 +114,7 @@ public class Weapon : MonoBehaviour
 
     private ProjectileHero MakeProjectile()
     {
-        GameObject go = Instantiate<GameObject>(definition.projectilePrefab, PROJECTILE_ANCHOR);
+        var go = Instantiate<GameObject>(definition.projectilePrefab, PROJECTILE_ANCHOR);
         ProjectileHero projectile = go.GetComponent<ProjectileHero>();
 
         Vector3 position = shotPointTransform.position;

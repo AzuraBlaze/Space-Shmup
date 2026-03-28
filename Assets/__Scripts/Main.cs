@@ -14,7 +14,15 @@ public class Main : MonoBehaviour
     public float enemySpawnPerSecond = 0.5f;
     public float enemyInsetDefault = 1.5f;
     public float gameRestartDelay = 2;
+    public GameObject powerUpPrefab;
     public WeaponDefinition[] weaponDefinitions;
+    public eWeaponType[] powerUpFrequency = new[]
+    {
+        eWeaponType.blaster,
+        eWeaponType.blaster,
+        eWeaponType.spread,
+        eWeaponType.shield
+    };
 
     private BoundsCheck boundsCheck;
 
@@ -40,7 +48,7 @@ public class Main : MonoBehaviour
         }
         
         int index = Random.Range(0, prefabEnemies.Length);
-        GameObject go = Instantiate<GameObject>(prefabEnemies[index]);
+        var go = Instantiate<GameObject>(prefabEnemies[index]);
 
         float enemyInset = enemyInsetDefault;
         if (go.GetComponent<BoundsCheck>() != null)
@@ -76,5 +84,20 @@ public class Main : MonoBehaviour
     static public WeaponDefinition GET_WEAPON_DEFINITION(eWeaponType weaponType)
     {
         return WEAPON_DICT.ContainsKey(weaponType) ? WEAPON_DICT[weaponType] : new();
+    }
+
+    static public void SHIP_DESTROYED(Enemy enemy)
+    {
+        if (Random.value <= enemy.powerUpDropChance)
+        {
+            int index = Random.Range(0, S.powerUpFrequency.Length);
+            eWeaponType powerUpType = S.powerUpFrequency[index];
+
+            var go = Instantiate<GameObject>(S.powerUpPrefab);
+            var powerUp = go.GetComponent<PowerUp>();
+            powerUp.SetType(powerUpType);
+
+            powerUp.transform.position = enemy.transform.position;
+        }
     }
 }
