@@ -76,3 +76,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc5adec61756d68a7b26b62d75b4cc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 2
+  definition:
+    type: 0
+    letter: 
+    powerUpColor: {r: 1, g: 1, b: 1, a: 1}
+    weaponModelPrefab: {fileID: 0}
+    projectilePrefab: {fileID: 0}
+    projectileColor: {r: 1, g: 1, b: 1, a: 1}
+    damageOnHit: 0
+    delayBetweenShots: 0
+    velocity: 50
+  nextShotTime: 0
