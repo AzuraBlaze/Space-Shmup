@@ -30,7 +30,6 @@ public class Hero : MonoBehaviour
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
-        fireEvent += TempFire;
     }
 
     void Update()
@@ -49,28 +48,23 @@ public class Hero : MonoBehaviour
             0
         );
 
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     TempFire();
-        // }
-
         if (Input.GetAxis("Jump") == 1 && fireEvent != null)
         {
             fireEvent();
         }
     }
 
-    void TempFire()
-    {
-        GameObject projectileGO = Instantiate<GameObject>(projectilePrefab);
-        projectileGO.transform.position = transform.position;
-        Rigidbody rigidBody = projectileGO.GetComponent<Rigidbody>();
+    // void TempFire()
+    // {
+    //     GameObject projectileGO = Instantiate<GameObject>(projectilePrefab);
+    //     projectileGO.transform.position = transform.position;
+    //     Rigidbody rigidBody = projectileGO.GetComponent<Rigidbody>();
 
-        ProjectileHero projectile = projectileGO.GetComponent<ProjectileHero>();
-        projectile.type = eWeaponType.blaster;
-        float typeSpeed = Main.GET_WEAPON_DEFINITION(projectile.type).velocity;
-        rigidBody.velocity = Vector3.up * typeSpeed;
-    }
+    //     ProjectileHero projectile = projectileGO.GetComponent<ProjectileHero>();
+    //     projectile.type = eWeaponType.blaster;
+    //     float typeSpeed = Main.GET_WEAPON_DEFINITION(projectile.type).velocity;
+    //     rigidBody.velocity = Vector3.up * typeSpeed;
+    // }
 
     void OnTriggerEnter(Collider other)
     {
