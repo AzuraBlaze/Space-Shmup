@@ -25,7 +25,7 @@ public class Main : MonoBehaviour
         Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
 
         WEAPON_DICT = new();
-        foreach (WeaponDefinition definition in weaponDefinitions)
+        foreach (var definition in weaponDefinitions)
         {
             WEAPON_DICT[definition.type] = definition;
         }

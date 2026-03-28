@@ -45,14 +45,23 @@ public class Enemy : MonoBehaviour
     {
         GameObject otherGO = collision.gameObject;
 
-        if (otherGO.GetComponent<ProjectileHero>() != null)
+        var projectile = otherGO.GetComponent<ProjectileHero>();
+        if (projectile != null)
         {
+            if (boundsCheck.isOnScreen)
+            {
+                health -= Main.GET_WEAPON_DEFINITION(projectile.type).damageOnHit;
+                if (health <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+
             Destroy(otherGO);
-            Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Enemy hit by non-ProjectileHero: " + otherGO.name);
+            print("Enemy hit by non-ProjectileHero: " + otherGO.name);
         }
     }
 }

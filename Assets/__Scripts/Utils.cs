@@ -28,4 +28,17 @@ public class Utils : MonoBehaviour
 
         return vectors[0, 0];
     }
+
+    static public Material[] GetAllMaterials(GameObject go)
+    {
+        var renderers = go.GetComponentsInChildren<Renderer>();
+        var materials = new Material[renderers.Length];
+        
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            materials[i] = renderers[i].material;
+        }
+
+        return materials;
+    }
 }
