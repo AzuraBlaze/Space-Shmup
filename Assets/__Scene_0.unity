@@ -542,7 +542,7 @@ MonoBehaviour:
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 1
     delayBetweenShots: 0.2
-    velocity: 0
+    velocity: 50
   - type: 2
     letter: S
     powerUpColor: {r: 0, g: 1, b: 1, a: 1}
@@ -551,7 +551,7 @@ MonoBehaviour:
     projectileColor: {r: 0, g: 1, b: 1, a: 1}
     damageOnHit: 1
     delayBetweenShots: 0.4
-    velocity: 0
+    velocity: 50
   - type: 3
     letter: O
     powerUpColor: {r: 0, g: 1, b: 0, a: 0}
@@ -560,7 +560,7 @@ MonoBehaviour:
     projectileColor: {r: 1, g: 1, b: 1, a: 1}
     damageOnHit: 0
     delayBetweenShots: 0
-    velocity: 0
+    velocity: 50
 --- !u!1 &1206569904
 GameObject:
   m_ObjectHideFlags: 0

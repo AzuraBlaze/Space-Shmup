@@ -17,6 +17,8 @@ public class Hero : MonoBehaviour
     private float _shieldLevel = 1;
     [Tooltip("This field holds a reference to the last triggering GameObject")]
     private GameObject lastTriggerGo = null;
+    public delegate void WeaponFireDelegate();
+    public event WeaponFireDelegate fireEvent;
 
     void Awake()
     {
@@ -28,6 +30,7 @@ public class Hero : MonoBehaviour
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
+        fireEvent += TempFire;
     }
 
     void Update()
@@ -46,9 +49,14 @@ public class Hero : MonoBehaviour
             0
         );
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     TempFire();
+        // }
+
+        if (Input.GetAxis("Jump") == 1 && fireEvent != null)
         {
-            TempFire();
+            fireEvent();
         }
     }
 
@@ -57,7 +65,12 @@ public class Hero : MonoBehaviour
         GameObject projectileGO = Instantiate<GameObject>(projectilePrefab);
         projectileGO.transform.position = transform.position;
         Rigidbody rigidBody = projectileGO.GetComponent<Rigidbody>();
-        rigidBody.velocity = Vector3.up * projectileSpeed;
+        // rigidBody.velocity = Vector3.up * projectileSpeed;
+
+        ProjectileHero projectile = projectileGO.GetComponent<ProjectileHero>();
+        projectile.type = eWeaponType.blaster;
+        float typeSpeed = Main.GET_WEAPON_DEFINITION(projectile.type).velocity;
+        rigidBody.velocity = Vector3.up * typeSpeed;
     }
 
     void OnTriggerEnter(Collider other)
