@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Main : MonoBehaviour
 {
     static private Main S;
+    static private Dictionary<eWeaponType, WeaponDefinition> WEAPON_DICT;
 
     [Header("Inscribed")]
     public bool spawnEnemies = true;
@@ -22,6 +23,12 @@ public class Main : MonoBehaviour
         S = this;
         boundsCheck = GetComponent<BoundsCheck>();
         Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
+
+        WEAPON_DICT = new();
+        foreach (WeaponDefinition definition in weaponDefinitions)
+        {
+            WEAPON_DICT[definition.type] = definition;
+        }
     }
 
     public void SpawnEnemy()
@@ -64,5 +71,10 @@ public class Main : MonoBehaviour
     static public void HERO_DIED()
     {
         S.DelayedRestart();
+    }
+
+    static public WeaponDefinition GET_WEAPON_DEFINITION(eWeaponType weaponType)
+    {
+        return WEAPON_DICT.ContainsKey(weaponType) ? WEAPON_DICT[weaponType] : new();
     }
 }

@@ -6,7 +6,7 @@ public class Enemy_3 : Enemy
 {
     [Header("Enemy_3 Inscribed Fields")]
     public float lifeTime = 5;
-    public Vector2 midpointYRange = new Vector2(1.5f, 3);
+    public Vector2 midpointYRange = new(1.5f, 3);
     [Tooltip("If true, Bezier points and path are drawn in the Scene pane.")]
     public bool drawDebugInfo = true;
 

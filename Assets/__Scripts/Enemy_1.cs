@@ -30,7 +30,7 @@ public class Enemy_1: Enemy
         tempPosition.x = x0 + waveWidth * sin;
         position = tempPosition;
 
-        Vector3 rotation = new Vector3(0, sin * waveRotY, 0);
+        Vector3 rotation = new(0, sin * waveRotY, 0);
         this.transform.rotation = Quaternion.Euler(rotation);
 
         base.Move();

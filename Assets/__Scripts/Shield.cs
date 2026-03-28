@@ -24,7 +24,7 @@ public class Shield : MonoBehaviour
         if (levelShown != currentLevel)
         {
             levelShown = currentLevel;
-            material.mainTextureOffset = new Vector2(0.2f * levelShown, 0);
+            material.mainTextureOffset = new(0.2f * levelShown, 0);
         }
 
         float rotationZ = -(rotationsPerSecond * Time.time * 360) % 360f;

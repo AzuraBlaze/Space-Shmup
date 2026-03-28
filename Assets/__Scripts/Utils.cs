@@ -6,7 +6,7 @@ public class Utils : MonoBehaviour
 {
     static public Vector3 Bezier(float u, params Vector3[] points)
     {
-        Vector3[,] vectors = new Vector3[points.Length, points.Length];
+        var vectors = new Vector3[points.Length, points.Length];
 
         int row = points.Length - 1;
         for (int column = 0; column < points.Length; column++)
