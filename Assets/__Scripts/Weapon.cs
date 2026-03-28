@@ -14,6 +14,8 @@ public class WeaponDefinition
     public Color powerUpColor = Color.white;
     [Tooltip("Prefab of Weapon model that is attached to Player Ship")]
     public GameObject weaponModelPrefab;
+    [Tooltip("Prefab of projectile that is fired")]
+    public GameObject projectilePrefab;
     [Tooltip("Color of the Projectile that is fired")]
     public Color projectileColor = Color.white;
     [Tooltip("Damage caused when a single projectile hits an Enemy")]
