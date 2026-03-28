@@ -34,7 +34,5 @@ public class Enemy_1: Enemy
         this.transform.rotation = Quaternion.Euler(rotation);
 
         base.Move();
-
-        // print(boundsCheck.isOnScreen);
     }
 }
