@@ -65,7 +65,6 @@ public class Hero : MonoBehaviour
         GameObject projectileGO = Instantiate<GameObject>(projectilePrefab);
         projectileGO.transform.position = transform.position;
         Rigidbody rigidBody = projectileGO.GetComponent<Rigidbody>();
-        // rigidBody.velocity = Vector3.up * projectileSpeed;
 
         ProjectileHero projectile = projectileGO.GetComponent<ProjectileHero>();
         projectile.type = eWeaponType.blaster;
