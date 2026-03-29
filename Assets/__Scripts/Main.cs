@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour
 {
@@ -23,7 +24,12 @@ public class Main : MonoBehaviour
         eWeaponType.spread,
         eWeaponType.shield
     };
-
+    public GameObject playingScreen;
+    public GameObject gameOverScreen;
+    
+    [SerializeField] private Text scoreText;
+    
+    private int score = 0;
     private BoundsCheck boundsCheck;
 
     void Awake()
@@ -66,19 +72,17 @@ public class Main : MonoBehaviour
         Invoke(nameof(SpawnEnemy), 1f / enemySpawnPerSecond);
     }
 
-    void DelayedRestart()
+    public void RestartGame()
     {
-        Invoke(nameof(Restart), gameRestartDelay);
-    }
-
-    void Restart()
-    {
+        Time.timeScale = 1;
         SceneManager.LoadScene("__Scene_0");
     }
 
     static public void HERO_DIED()
     {
-        S.DelayedRestart();
+        Time.timeScale = 0;
+        S.playingScreen.SetActive(false);
+        S.gameOverScreen.SetActive(true);
     }
 
     static public WeaponDefinition GET_WEAPON_DEFINITION(eWeaponType weaponType)
@@ -99,5 +103,11 @@ public class Main : MonoBehaviour
 
             powerUp.transform.position = enemy.transform.position;
         }
+    }
+
+    static public void ADD_SCORE(int amount)
+    {
+        S.score += amount;
+        S.scoreText.text = "Score: " + S.score;
     }
 }

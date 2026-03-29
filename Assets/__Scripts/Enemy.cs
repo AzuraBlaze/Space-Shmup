@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
                     if (!calledShipDestroyed)
                     {
                         calledShipDestroyed = true;
+                        Main.ADD_SCORE(score);
                         Main.SHIP_DESTROYED(this);
                     }
                     Destroy(this.gameObject);
