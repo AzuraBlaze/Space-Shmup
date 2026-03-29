@@ -98,7 +98,7 @@ public class Enemy_4 : Enemy
                     calledShipDestroyed = true;
                 }
 
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Explode();
                 Destroy(gameObject);
             }
         }

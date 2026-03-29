@@ -6,11 +6,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Inscribed")]
-    public float speed = 10f;
+    public float speed = 10;
     public float fireRate = 0.3f;
     public float health = 10;
     public int score = 100;
-    public float powerUpDropChance = 1f;
+    public float powerUpDropChance = 1;
     public GameObject explosionPrefab;
 
     protected bool calledShipDestroyed = false;
@@ -62,9 +62,9 @@ public class Enemy : MonoBehaviour
                         calledShipDestroyed = true;
                         Main.ADD_SCORE(score);
                         Main.SHIP_DESTROYED(this);
-                        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     }
 
+                    Explode();
                     Destroy(this.gameObject);
                 }
             }
@@ -75,5 +75,11 @@ public class Enemy : MonoBehaviour
         {
             print("Enemy hit by non-ProjectileHero: " + otherGO.name);
         }
+    }
+
+    protected void Explode()
+    {
+        var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        explosion.transform.localScale = Vector3.one * (boundsCheck.radius / 2);
     }
 }
