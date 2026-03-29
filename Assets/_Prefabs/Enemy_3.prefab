@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   fireRate: 0.3
-  health: 10
+  health: 25
   score: 300
   powerUpDropChance: 0.75
   explosionPrefab: {fileID: 8550281090675080862, guid: 39ed255e726418028983b589cfba4c80, type: 3}
