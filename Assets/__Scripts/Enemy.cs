@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float health = 10;
     public int score = 100;
     public float powerUpDropChance = 1f;
+    public GameObject explosionPrefab;
 
     protected bool calledShipDestroyed = false;
     protected BoundsCheck boundsCheck;
@@ -53,6 +54,7 @@ public class Enemy : MonoBehaviour
             if (boundsCheck.isOnScreen)
             {
                 health -= Main.GET_WEAPON_DEFINITION(projectile.type).damageOnHit;
+                
                 if (health <= 0)
                 {
                     if (!calledShipDestroyed)
@@ -60,11 +62,13 @@ public class Enemy : MonoBehaviour
                         calledShipDestroyed = true;
                         Main.ADD_SCORE(score);
                         Main.SHIP_DESTROYED(this);
+                        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
                     }
+
                     Destroy(this.gameObject);
                 }
             }
-
+            
             Destroy(otherGO);
         }
         else

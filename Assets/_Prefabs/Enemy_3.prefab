@@ -101,6 +101,7 @@ MonoBehaviour:
   health: 10
   score: 300
   powerUpDropChance: 0.75
+  explosionPrefab: {fileID: 8550281090675080862, guid: 39ed255e726418028983b589cfba4c80, type: 3}
   lifeTime: 5
   midpointYRange: {x: 1.5, y: 3}
   drawDebugInfo: 0
