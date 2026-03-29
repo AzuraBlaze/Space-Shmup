@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb85c3951a156d3aaf1f4898833a3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEnemies: 0
+  spawnEnemies: 1
   prefabEnemies:
   - {fileID: 7331132579709632244, guid: 9e156e18aab60c6d7b0d56ee6a8004f9, type: 3}
   - {fileID: 7331132579709632244, guid: 9e156e18aab60c6d7b0d56ee6a8004f9, type: 3}
